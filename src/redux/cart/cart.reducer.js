@@ -1,3 +1,5 @@
+import { GET_CART_ITEMS_SUCCESS } from "./cart.types";
+
 // Note: Do not update/change the initial state
 const cartInitalState = {
   getCartItems: {
@@ -18,6 +20,16 @@ const cartInitalState = {
   },
   data: [],
 };
-export const cartReducer = (state = cartInitalState) => {
-  return state;
+export const cartReducer = (state = cartInitalState, { type, payload }) => {
+  switch (type) {
+    case GET_CART_ITEMS_SUCCESS: {
+      return {
+        ...state,
+        data: payload,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
 };
